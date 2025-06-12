@@ -27,7 +27,19 @@ if hat_sonder:
 
 kombination = zeichen_vorrat ** laenge
 
-versuche_pro_sekunde = 1550000
+versuche_pro_sekunde_frage = int(input("Wieviele Versuche sollen pro Sekunde durchgeführt werden: [1] Normaler PC (1.5 Mio/s) [2] Profi (100 Mio/s) [3] GPU-Angriff (1 Milliarde/s) [4] Manuell eingeben: "))
+
+if versuche_pro_sekunde_frage == 1:
+    versuche_pro_sekunde = 1_500_000
+elif versuche_pro_sekunde_frage == 2:
+    versuche_pro_sekunde = 100_000_000
+elif versuche_pro_sekunde_frage == 3:
+    versuche_pro_sekunde = 1_000_000_000
+elif versuche_pro_sekunde_frage == 4:
+    versuche_pro_sekunde = int(input("Gib die Anzahl der Versuche pro Sekunde ein: "))
+else:
+    print("Ungültige Auswahl, Standardwert (1.5 Mio/s) wird verwendet.")
+    versuche_pro_sekunde = 1_500_000
 
 time = kombination / versuche_pro_sekunde
 
