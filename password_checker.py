@@ -1,18 +1,18 @@
 import string
 import math
 
-password = input("Wie lautet dein Passwort?") #fragt nach Passwort
+password = input("Wie lautet dein Passwort?")           #fragt nach Passwort
 
-hat_klein = any(c.islower() for c in password)
-hat_gross = any(c.isupper() for c in password)
-hat_zahl = any(c.isdigit() for c in password)
-hat_sonder = any(c in string.punctuation for c in password)
+hat_klein = any(c.islower() for c in password)          #prüft ob Kleinbuchstaben enthalten sind
+hat_gross = any(c.isupper() for c in password)          #prüft ob Großbuchstaben enthalten sind
+hat_zahl = any(c.isdigit() for c in password)           #prüft ob Zahlen enthalten sind
+hat_sonder = any(c in string.punctuation for c in password)     #prüft ob Sonderzeichen enthalten sind
 
-laenge = len(password)
+laenge = len(password)      #Länge des Passworts
 
-zeichen_vorrat = 0
+zeichen_vorrat = 0      #Anzahl der möglichen Zeichen
 
-if hat_klein:
+if hat_klein:                   
     zeichen_vorrat += 30
 
 if hat_gross:
@@ -25,9 +25,9 @@ if hat_sonder:
     zeichen_vorrat +=len(string.punctuation)
 
 
-kombination = zeichen_vorrat ** laenge
+kombination = zeichen_vorrat ** laenge      #Anzahl der möglichen Kombinationen
 
-versuche_pro_sekunde_frage = int(input("Wieviele Versuche sollen pro Sekunde durchgeführt werden: \n [1] Normaler PC (1.5 Mio/s) \n [2] Profi (100 Mio/s) \n [3] GPU-Angriff (1 Milliarde/s) \n [4] Manuell eingeben: \n "))
+versuche_pro_sekunde_frage = int(input("Wieviele Versuche sollen pro Sekunde durchgeführt werden: \n [1] Normaler PC (1.5 Mio/s) \n [2] Profi (100 Mio/s) \n [3] GPU-Angriff (1 Milliarde/s) \n [4] Manuell eingeben: \n "))        #Fragt nach der Anzahl der Versuche pro Sekunde
 
 if versuche_pro_sekunde_frage == 1:
     versuche_pro_sekunde = 1_500_000
@@ -41,9 +41,9 @@ else:
     print("Ungültige Auswahl, Standardwert (1.5 Mio/s) wird verwendet.")
     versuche_pro_sekunde = 1_500_000
 
-time = kombination / versuche_pro_sekunde
+time = kombination / versuche_pro_sekunde       #Berechnet die Zeit in Sekunden, die benötigt wird, um das Passwort zu knacken
 
-def format_zeit(s):
+def format_zeit(s):         #Formatiert die Zeit in eine lesbare Form
     if s < 60:
         return f"{s:.2f} Sekunden"
     elif s < 3600:
@@ -55,7 +55,7 @@ def format_zeit(s):
     else:
         return f"{s/31_536_000:.2f} Jahre"
     
-if laenge < 6 or zeichen_vorrat < 40:
+if laenge < 6 or zeichen_vorrat < 40:       #Prüft die Sicherheitsstufe des Passworts
     sicherheit = "Schwach"
 
 elif laenge < 10 or zeichen_vorrat < 69:
@@ -65,7 +65,7 @@ else:
     sicherheit = "Stark"
 
 
-print("Passwortanalyse:")
+print("Passwortanalyse:")       #Ausgabe der Passwortanalyse
 print("---------------------")
 print(f"Länge: {laenge}")
 print("Kleinbuchstaben:", "✅" if hat_klein else "❌")
