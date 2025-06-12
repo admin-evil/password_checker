@@ -27,7 +27,7 @@ if hat_sonder:
 
 kombination = zeichen_vorrat ** laenge
 
-versuche_pro_sekunde_frage = int(input("Wieviele Versuche sollen pro Sekunde durchgeführt werden: [1] Normaler PC (1.5 Mio/s) [2] Profi (100 Mio/s) [3] GPU-Angriff (1 Milliarde/s) [4] Manuell eingeben: "))
+versuche_pro_sekunde_frage = int(input("Wieviele Versuche sollen pro Sekunde durchgeführt werden: \n [1] Normaler PC (1.5 Mio/s) \n [2] Profi (100 Mio/s) \n [3] GPU-Angriff (1 Milliarde/s) \n [4] Manuell eingeben: \n "))
 
 if versuche_pro_sekunde_frage == 1:
     versuche_pro_sekunde = 1_500_000
